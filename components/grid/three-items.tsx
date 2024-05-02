@@ -61,7 +61,7 @@ export async function ThreeItemGrid() {
         item={{
           title: "Acme Drawstring T-Shirt",
           featuredImage: "/images/7.webp",
-          handle: "string",
+          handle: "Acme-Drawstring-TShirt",
           price: "20",
           currencyCode: "USD",
         }}
@@ -72,7 +72,7 @@ export async function ThreeItemGrid() {
         item={{
           title: "Acme Drawstring Bag",
           featuredImage: "/images/3.webp",
-          handle: "string",
+          handle: "Acme-Drawstring-Bag",
           price: "12",
           currencyCode: "USD",
         }}
@@ -83,7 +83,7 @@ export async function ThreeItemGrid() {
         item={{
           title: "Acme Cup",
           featuredImage: "/images/4.webp",
-          handle: "string",
+          handle: "Acme-Cup",
           price: "15",
           currencyCode: "USD",
         }}

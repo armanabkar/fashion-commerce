@@ -5,72 +5,71 @@ import Footer from "@/components/layout/footer";
 import { Gallery } from "@/components/product/gallery";
 import { ProductDescription } from "@/components/product/product-description";
 import { HIDDEN_PRODUCT_TAG } from "@/lib/constants";
-// import { Image } from "lib/shopify/types";
 import Link from "next/link";
 import { Suspense } from "react";
-import { Image } from "@/lib/shopify/types";
 import { products } from "@/lib/testData";
 
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: { handle: string };
-// }): Promise<Metadata> {
-//   const product = await getProduct(params.handle);
+const product = {
+  id: "1",
+  title: "Acme Baby Cap",
+  featuredImage: "/images/1-1.webp",
+  handle: "Acme-Baby-Cap",
+  price: "10",
+  currencyCode: "USD",
+  availableForSale: true,
+  description: "sasasa",
+  descriptionHtml: "<small>100% combed ringspun cotton</small>",
+  images: [
+    { url: "/images/1-1.webp", altText: "Acme Baby Cap" },
+    { url: "/images/1-2.webp", altText: "Acme Baby Capa" },
+    { url: "/images/1-3.webp", altText: "Acme Baby Cap" },
+  ],
+  seo: { title: "Acme Baby Cap", description: "" },
+};
 
-//   if (!product) return notFound();
+export async function generateMetadata({
+  params,
+}: {
+  params: { handle: string };
+}): Promise<Metadata> {
+  // const product = await getProduct(params.handle);
 
-//   const { url, width, height, altText: alt } = product.featuredImage || {};
-//   const indexable = !product.tags.includes(HIDDEN_PRODUCT_TAG);
+  if (!product) return notFound();
 
-//   return {
-//     title: product.seo.title || product.title,
-//     description: product.seo.description || product.description,
-//     robots: {
-//       index: indexable,
-//       follow: indexable,
-//       googleBot: {
-//         index: indexable,
-//         follow: indexable,
-//       },
-//     },
-//     openGraph: url
-//       ? {
-//           images: [
-//             {
-//               url,
-//               width,
-//               height,
-//               alt,
-//             },
-//           ],
-//         }
-//       : null,
-//   };
-// }
+  // const { url, width, height, altText: alt } = product.featuredImage || {};
+  // const indexable = !product.tags.includes(HIDDEN_PRODUCT_TAG);
+
+  return {
+    title: product.seo.title || product.title,
+    description: product.seo.description || product.description,
+    // robots: {
+    //   index: indexable,
+    //   follow: indexable,
+    //   googleBot: {
+    //     index: indexable,
+    //     follow: indexable,
+    //   },
+    // },
+    // openGraph: url
+    //   ? {
+    //       images: [
+    //         {
+    //           url,
+    //           width,
+    //           height,
+    //           alt,
+    //         },
+    //       ],
+    //     }
+    //   : null,
+  };
+}
 
 export default async function ProductPage({
   params,
 }: {
   params: { handle: string };
 }) {
-  const product = {
-    id: "1",
-    title: "Acme Baby Cap",
-    featuredImage: "/images/1-1.webp",
-    handle: "string",
-    price: "10",
-    currencyCode: "USD",
-    availableForSale: true,
-    description: "sasasa",
-    descriptionHtml: "<small>100% combed ringspun cotton</small>",
-    images: [
-      { url: "/images/1-1.webp", altText: "Acme Baby Cap" },
-      { url: "/images/1-2.webp", altText: "Acme Baby Capa" },
-      { url: "/images/1-3.webp", altText: "Acme Baby Cap" },
-    ],
-  };
-
   if (!product) return notFound();
 
   const productJsonLd = {

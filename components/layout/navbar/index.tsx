@@ -1,5 +1,5 @@
-// import Cart from 'components/cart';
-// import OpenCart from 'components/cart/open-cart';
+import Cart from "@/components/cart";
+import OpenCart from "@/components/cart/open-cart";
 import LogoSquare from "../../logo-square";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -76,17 +76,8 @@ export default async function Navbar() {
           </Suspense>
         </div>
         <div className="flex justify-end md:w-1/3">
-          {/* <Suspense fallback={<OpenCart />}>
+          <Suspense fallback={<OpenCart />}>
             <Cart />
-          </Suspense> */}
-          <Suspense fallback={null}>
-            <div className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white">
-              <ShoppingCartIcon
-                className={clsx(
-                  "h-4 transition-all ease-in-out hover:scale-110 "
-                )}
-              />
-            </div>
           </Suspense>
         </div>
       </div>

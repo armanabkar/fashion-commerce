@@ -11,84 +11,84 @@ export const products = [
   {
     title: "Acme Baby Cap",
     featuredImage: "/images/1-1.webp",
-    handle: "string",
+    handle: "Acme-Baby-Cap",
     price: "10",
     currencyCode: "USD",
   },
   {
     title: "Acme Mug",
     featuredImage: "/images/6.webp",
-    handle: "string",
+    handle: "Acme-Mug",
     price: "15",
     currencyCode: "USD",
   },
   {
     title: "Acme Hoodie",
     featuredImage: "/images/5.webp",
-    handle: "string",
+    handle: "Acme-Hoodie",
     price: "50",
     currencyCode: "USD",
   },
   {
     title: "Acme Baby Onesie",
     featuredImage: "/images/2.webp",
-    handle: "string",
+    handle: "Acme-Baby-Onesie",
     price: "10",
     currencyCode: "USD",
   },
   {
     title: "Acme Baby Cap",
     featuredImage: "/images/1-1.webp",
-    handle: "string",
+    handle: "Acme-Baby-Cap",
     price: "10",
     currencyCode: "USD",
   },
   {
     title: "Acme Mug",
     featuredImage: "/images/6.webp",
-    handle: "string",
+    handle: "Acme-Mug",
     price: "15",
     currencyCode: "USD",
   },
   {
     title: "Acme Hoodie",
     featuredImage: "/images/5.webp",
-    handle: "string",
+    handle: "Acme-Hoodie",
     price: "50",
     currencyCode: "USD",
   },
   {
     title: "Acme Baby Onesie",
     featuredImage: "/images/2.webp",
-    handle: "string",
+    handle: "Acme-Baby-Onesie",
     price: "10",
     currencyCode: "USD",
   },
   {
     title: "Acme Baby Cap",
     featuredImage: "/images/1-1.webp",
-    handle: "string",
+    handle: "Acme-Baby-Cap",
     price: "10",
     currencyCode: "USD",
   },
   {
     title: "Acme Mug",
     featuredImage: "/images/6.webp",
-    handle: "string",
+    handle: "Acme-Mug",
     price: "15",
     currencyCode: "USD",
   },
   {
     title: "Acme Hoodie",
     featuredImage: "/images/5.webp",
-    handle: "string",
+    handle: "Acme-Hoodie",
     price: "50",
     currencyCode: "USD",
   },
   {
     title: "Acme Baby Onesie",
     featuredImage: "/images/2.webp",
-    handle: "string",
+    handle: "Acme-Baby-Onesie",
     price: "10",
     currencyCode: "USD",
   },
@@ -203,3 +203,37 @@ And more!`,
     updatedAt: "2024/05/01",
   },
 ];
+
+export interface Cart {
+  id: string;
+  checkoutUrl: string;
+  cost: {
+    subtotalAmount: Money;
+    totalAmount: Money;
+    totalTaxAmount: Money;
+  };
+  lines: CartItem[];
+  totalQuantity: number;
+}
+
+export type CartItem = {
+  id: string;
+  quantity: number;
+  cost: {
+    totalAmount: Money;
+  };
+  merchandise: {
+    id: string;
+    title: string;
+    selectedOptions: {
+      name: string;
+      value: string;
+    }[];
+    product: Product;
+  };
+};
+
+export interface Money {
+  amount: string;
+  currencyCode: string;
+}

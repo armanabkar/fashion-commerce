@@ -1,6 +1,5 @@
 import Grid from "@/components/grid";
 import { GridTileImage } from "@/components/grid/tile";
-// import { Product } from 'lib/shopify/types';
 import Link from "next/link";
 import { Product } from "@/lib/testData";
 
