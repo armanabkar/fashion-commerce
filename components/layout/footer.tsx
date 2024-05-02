@@ -1,10 +1,10 @@
 import Link from "next/link";
-
 import FooterMenu from "./footer-menu";
-import LogoSquare from "./logo-square";
+import LogoSquare from "../logo-square";
 import { Suspense } from "react";
+import { menu } from "@/lib/testData";
 
-const { COMPANY_NAME, SITE_NAME } = process.env;
+const { COMPANY_NAME, SITE_NAME, OWNER_NAME } = process.env;
 
 export default async function Footer() {
   const currentYear = new Date().getFullYear();
@@ -37,13 +37,12 @@ export default async function Footer() {
             </div>
           }
         >
-          {/* <FooterMenu menu={menu} /> */}
-          <FooterMenu />
+          <FooterMenu menu={menu} />
         </Suspense>
       </div>
       <div className="border-t border-neutral-200 py-6 text-sm dark:border-neutral-700">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-1 px-4 md:flex-row md:gap-0 md:px-4 min-[1320px]:px-0">
-          <p>
+          <p className="text-center">
             &copy; {copyrightDate} {copyrightName}
             {copyrightName.length && !copyrightName.endsWith(".")
               ? "."
@@ -51,10 +50,10 @@ export default async function Footer() {
             All rights reserved.
           </p>
           <hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-400 md:inline-block" />
-          <p>Designed in California</p>
+          <p>Designed with Love</p>
           <p className="md:ml-auto">
             <span className="text-black dark:text-white">
-              Crafted by ▲ Arman
+              Crafted by ▲ {OWNER_NAME}
             </span>
           </p>
         </div>

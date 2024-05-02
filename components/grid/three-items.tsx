@@ -1,13 +1,6 @@
 import { GridTileImage } from "./tile";
 import Link from "next/link";
-
-interface Product {
-  title: string;
-  featuredImage: string;
-  handle: string;
-  price: string;
-  currencyCode: string;
-}
+import { Product } from "@/lib/testData";
 
 interface ThreeItemGridItemProp {
   item: Product;

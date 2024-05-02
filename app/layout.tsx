@@ -1,10 +1,10 @@
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/layout/navbar";
 import { GeistSans } from "geist/font/sans";
 import { ensureStartsWith } from "@/lib/utils";
 import { ReactNode } from "react";
 import "./globals.css";
 
-const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
+const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME, COMPANY_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : "http://localhost:3000";
@@ -18,7 +18,7 @@ const twitterSite = TWITTER_SITE
 export const metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: SITE_NAME!,
+    default: COMPANY_NAME!,
     template: `%s | ${SITE_NAME}`,
   },
   robots: {

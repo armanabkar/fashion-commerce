@@ -1,13 +1,6 @@
 import Link from "next/link";
 import { GridTileImage } from "./grid/tile";
-
-interface Product {
-  title: string;
-  featuredImage: string;
-  handle: string;
-  price: string;
-  currencyCode: string;
-}
+import { products } from "@/lib/testData";
 
 export async function Carousel() {
   // const products = await getCollectionProducts({
@@ -18,92 +11,7 @@ export async function Carousel() {
 
   // const carouselProducts = [...products, ...products, ...products];
 
-  const carouselProducts: Product[] = [
-    {
-      title: "Acme Baby Cap",
-      featuredImage: "/images/1-1.webp",
-      handle: "string",
-      price: "10",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Mug",
-      featuredImage: "/images/6.webp",
-      handle: "string",
-      price: "15",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Hoodie",
-      featuredImage: "/images/5.webp",
-      handle: "string",
-      price: "50",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Baby Onesie",
-      featuredImage: "/images/2.webp",
-      handle: "string",
-      price: "10",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Baby Cap",
-      featuredImage: "/images/1-1.webp",
-      handle: "string",
-      price: "10",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Mug",
-      featuredImage: "/images/6.webp",
-      handle: "string",
-      price: "15",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Hoodie",
-      featuredImage: "/images/5.webp",
-      handle: "string",
-      price: "50",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Baby Onesie",
-      featuredImage: "/images/2.webp",
-      handle: "string",
-      price: "10",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Baby Cap",
-      featuredImage: "/images/1-1.webp",
-      handle: "string",
-      price: "10",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Mug",
-      featuredImage: "/images/6.webp",
-      handle: "string",
-      price: "15",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Hoodie",
-      featuredImage: "/images/5.webp",
-      handle: "string",
-      price: "50",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Baby Onesie",
-      featuredImage: "/images/2.webp",
-      handle: "string",
-      price: "10",
-      currencyCode: "USD",
-    },
-  ];
+  const carouselProducts = products;
 
   return (
     <div className=" w-full overflow-x-auto pb-6 pt-1">

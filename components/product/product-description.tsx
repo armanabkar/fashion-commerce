@@ -5,15 +5,7 @@ import Prose from "@/components/prose";
 import { Suspense } from "react";
 import { VariantSelector } from "./variant-selector";
 import clsx from "clsx";
-
-interface Product {
-  title: string;
-  featuredImage: string;
-  handle: string;
-  price: string;
-  currencyCode: string;
-  descriptionHtml?: string;
-}
+import { Product } from "@/lib/testData";
 
 export function ProductDescription({ product }: { product: Product }) {
   return (

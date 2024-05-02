@@ -1,11 +1,11 @@
 "use client";
-
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Menu } from "@/lib/testData";
 
-const FooterMenuItem = ({ item }: any) => {
+const FooterMenuItem = ({ item }: { item: Menu }) => {
   const pathname = usePathname();
   const [active, setActive] = useState(pathname === item.path);
 
@@ -16,7 +16,7 @@ const FooterMenuItem = ({ item }: any) => {
   return (
     <li>
       <Link
-        href=""
+        href={item.path}
         className={clsx(
           "block p-2 text-lg underline-offset-4 hover:text-black hover:underline md:inline-block md:text-sm dark:hover:text-neutral-300",
           {
@@ -24,29 +24,21 @@ const FooterMenuItem = ({ item }: any) => {
           }
         )}
       >
-        {item}
+        {item.title}
       </Link>
     </li>
   );
 };
 
-export default function FooterMenu() {
-  // if (!menu.length) return null;
+export default function FooterMenu({ menu }: { menu: Menu[] }) {
+  if (!menu.length) return null;
 
   return (
     <nav>
-      {/* <ul>
+      <ul>
         {menu.map((item: Menu) => {
           return <FooterMenuItem key={item.title} item={item} />;
         })}
-      </ul> */}
-      <ul>
-        <FooterMenuItem item={"Home"} />
-        <FooterMenuItem item={"About"} />
-        <FooterMenuItem item={"Terms & Conditions"} />
-        <FooterMenuItem item={"Shipping & Return Policy"} />
-        <FooterMenuItem item={"Privacy Policy"} />
-        <FooterMenuItem item={"FAQ"} />
       </ul>
     </nav>
   );

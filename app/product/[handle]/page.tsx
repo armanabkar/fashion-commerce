@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { GridTileImage } from "@/components/grid/tile";
-import Footer from "@/components/footer";
+import Footer from "@/components/layout/footer";
 import { Gallery } from "@/components/product/gallery";
 import { ProductDescription } from "@/components/product/product-description";
 import { HIDDEN_PRODUCT_TAG } from "@/lib/constants";
@@ -9,14 +9,7 @@ import { HIDDEN_PRODUCT_TAG } from "@/lib/constants";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Image } from "@/lib/shopify/types";
-
-interface Product {
-  title: string;
-  featuredImage: string;
-  handle: string;
-  price: string;
-  currencyCode: string;
-}
+import { products } from "@/lib/testData";
 
 // export async function generateMetadata({
 //   params,
@@ -136,92 +129,7 @@ export default async function ProductPage({
 async function RelatedProducts({ id }: { id: string }) {
   // const relatedProducts = await getProductRecommendations(id);
 
-  const relatedProducts: Product[] = [
-    {
-      title: "Acme Baby Cap",
-      featuredImage: "/images/1-1.webp",
-      handle: "string",
-      price: "10",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Mug",
-      featuredImage: "/images/6.webp",
-      handle: "string",
-      price: "15",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Hoodie",
-      featuredImage: "/images/5.webp",
-      handle: "string",
-      price: "50",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Baby Onesie",
-      featuredImage: "/images/2.webp",
-      handle: "string",
-      price: "10",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Baby Cap",
-      featuredImage: "/images/1-1.webp",
-      handle: "string",
-      price: "10",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Mug",
-      featuredImage: "/images/6.webp",
-      handle: "string",
-      price: "15",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Hoodie",
-      featuredImage: "/images/5.webp",
-      handle: "string",
-      price: "50",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Baby Onesie",
-      featuredImage: "/images/2.webp",
-      handle: "string",
-      price: "10",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Baby Cap",
-      featuredImage: "/images/1-1.webp",
-      handle: "string",
-      price: "10",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Mug",
-      featuredImage: "/images/6.webp",
-      handle: "string",
-      price: "15",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Hoodie",
-      featuredImage: "/images/5.webp",
-      handle: "string",
-      price: "50",
-      currencyCode: "USD",
-    },
-    {
-      title: "Acme Baby Onesie",
-      featuredImage: "/images/2.webp",
-      handle: "string",
-      price: "10",
-      currencyCode: "USD",
-    },
-  ];
+  const relatedProducts = products;
 
   if (!relatedProducts.length) return null;
 
