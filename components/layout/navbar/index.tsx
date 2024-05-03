@@ -9,13 +9,22 @@ const { SITE_NAME } = process.env;
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 
+interface Menu {
+  title: string;
+  path: string;
+}
+
 export default async function Navbar() {
+  const menu = [
+    { title: "All", path: "/search" },
+    { title: "T-Shirts", path: "/search/t-shirts" },
+    { title: "Pants", path: "/search/pants" },
+  ];
   return (
     <nav className="relative flex items-center justify-between p-4 lg:px-6">
       <div className="block flex-none md:hidden">
         <Suspense fallback={null}>
-          {/* <MobileMenu menu={menu} /> */}
-          <MobileMenu />
+          <MobileMenu menu={menu} />
         </Suspense>
       </div>
       <div className="flex w-full items-center">
@@ -29,7 +38,7 @@ export default async function Navbar() {
               {SITE_NAME}
             </div>
           </Link>
-          {/* {menu.length ? (
+          {menu.length ? (
             <ul className="hidden gap-6 text-sm md:flex md:items-center">
               {menu.map((item: Menu) => (
                 <li key={item.title}>
@@ -42,33 +51,7 @@ export default async function Navbar() {
                 </li>
               ))}
             </ul>
-          ) : null} */}
-          <ul className="hidden gap-6 text-sm md:flex md:items-center">
-            <li>
-              <Link
-                href="/search"
-                className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
-              >
-                All
-              </Link>
-            </li>
-            <li>
-              <Link
-                href=""
-                className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
-              >
-                T-Shirts
-              </Link>
-            </li>
-            <li>
-              <Link
-                href=""
-                className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
-              >
-                Pants
-              </Link>
-            </li>
-          </ul>
+          ) : null}
         </div>
         <div className="hidden justify-center md:flex md:w-1/3">
           <Suspense fallback={<SearchSkeleton />}>

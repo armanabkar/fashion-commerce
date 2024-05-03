@@ -6,7 +6,12 @@ import { Fragment, Suspense, useEffect, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Search, { SearchSkeleton } from "./search";
 
-export default function MobileMenu() {
+interface Menu {
+  title: string;
+  path: string;
+}
+
+export default function MobileMenu({ menu }: { menu: Menu[] }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
@@ -73,7 +78,7 @@ export default function MobileMenu() {
                     <Search />
                   </Suspense>
                 </div>
-                {/* {menu.length ? (
+                {menu.length ? (
                   <ul className="flex w-full flex-col">
                     {menu.map((item: Menu) => (
                       <li
@@ -86,24 +91,7 @@ export default function MobileMenu() {
                       </li>
                     ))}
                   </ul>
-                ) : null} */}
-                <ul className="flex w-full flex-col">
-                  <li className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white">
-                    <Link href="" onClick={closeMobileMenu}>
-                      All
-                    </Link>
-                  </li>
-                  <li className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white">
-                    <Link href="" onClick={closeMobileMenu}>
-                      T-Shirts
-                    </Link>
-                  </li>
-                  <li className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white">
-                    <Link href="" onClick={closeMobileMenu}>
-                      Pants
-                    </Link>
-                  </li>
-                </ul>
+                ) : null}
               </div>
             </Dialog.Panel>
           </Transition.Child>
