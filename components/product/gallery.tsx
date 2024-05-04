@@ -1,5 +1,4 @@
 "use client";
-
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { GridTileImage } from "@/components/grid/tile";
 import { createUrl } from "@/lib/utils";

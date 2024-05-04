@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
-export default function CheckoutsItems() {
+export default function CheckoutItems() {
   const [hidden, setHidden] = useState(true);
 
   return (
@@ -19,11 +19,7 @@ export default function CheckoutsItems() {
         <span className="text-xl font-bold dark:text-white">$30.00</span>
       </p>
 
-      <div
-        className={`lg:order-2 order-1 text-gray-600 lg:col-span-2 ${
-          hidden ? "hidden lg:block" : "block"
-        }`}
-      >
+      <div className={`${hidden ? "hidden lg:block" : "block"}`}>
         <div className="flex justify-between items-center py-1">
           <div className="flex items-center">
             <div className="relative h-16 w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
@@ -82,8 +78,7 @@ export default function CheckoutsItems() {
             </p>
           </div>
 
-          <hr className="mx-4 w-[1px] border-l border-neutral-400 md:inline-block" />
-          <hr className="my-4 mb-6 border-l border-neutral-400 lg:hidden" />
+          <hr className="my-4 mb-6 border-l border-neutral-400 dark:border-neutral-700 lg:hidden" />
         </div>
       </div>
     </>

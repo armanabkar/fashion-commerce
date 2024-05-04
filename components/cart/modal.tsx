@@ -11,7 +11,6 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import CloseCart from "./close-cart";
 import { DeleteItemButton } from "./delete-item-button";
 import { EditItemQuantityButton } from "./edit-item-quantity-button";
-import { MinusIcon, PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import OpenCart from "./open-cart";
 
 type MerchandiseSearchParams = {

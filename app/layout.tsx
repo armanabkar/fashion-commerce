@@ -19,7 +19,7 @@ export const metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default: COMPANY_NAME!,
-    template: `%s | ${SITE_NAME}`,
+    template: `%s | ${COMPANY_NAME}`,
   },
   robots: {
     follow: true,
