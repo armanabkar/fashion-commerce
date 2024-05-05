@@ -7,24 +7,7 @@ import { ProductDescription } from "@/components/product/product-description";
 import Link from "next/link";
 import { Suspense } from "react";
 import { products } from "@/lib/testData";
-
-const product = {
-  id: "1",
-  title: "Acme Baby Cap",
-  featuredImage: "/images/1-1.webp",
-  handle: "Acme-Baby-Cap",
-  price: "10",
-  currencyCode: "USD",
-  availableForSale: true,
-  description: "sasasa",
-  descriptionHtml: "<small>100% combed ringspun cotton</small>",
-  images: [
-    { url: "/images/1-1.webp", altText: "Acme Baby Cap" },
-    { url: "/images/1-2.webp", altText: "Acme Baby Capa" },
-    { url: "/images/1-3.webp", altText: "Acme Baby Cap" },
-  ],
-  seo: { title: "Acme Baby Cap", description: "" },
-};
+import { product } from "@/lib/testData";
 
 export async function generateMetadata({
   params,
@@ -85,6 +68,8 @@ export default async function ProductPage({
       priceCurrency: product.currencyCode,
       highPrice: product.price,
       lowPrice: product.price,
+      options: [],
+      variants: [],
     },
   };
 
