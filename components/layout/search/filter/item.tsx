@@ -1,5 +1,4 @@
 "use client";
-
 import clsx from "clsx";
 import type { SortFilterItem } from "@/lib/constants";
 import { createUrl } from "@/lib/utils";

@@ -1,42 +1,4 @@
-export interface Product {
-  id: string;
-  handle: string;
-  availableForSale: boolean;
-  title: string;
-  description: string;
-  descriptionHtml: string;
-  options: ProductOption;
-  price: string;
-  featuredImage: string;
-  images: { url: string; altText: string }[];
-  variants: ProductVariant;
-  currencyCode: string;
-  tags: string[];
-  updatedAt: string;
-  seo: SEO;
-}
-
-export type SEO = {
-  title: string;
-  description: string;
-};
-
-export type ProductOption = {
-  id: string;
-  name: string;
-  values: string[];
-}[];
-
-export type ProductVariant = {
-  id: string;
-  title: string;
-  availableForSale: boolean;
-  selectedOptions: {
-    name: string;
-    value: string;
-  }[];
-  price: Money;
-}[];
+import { Menu } from "./types";
 
 export const products = [
   {
@@ -125,11 +87,6 @@ export const products = [
   },
 ];
 
-export interface Menu {
-  title: string;
-  path: string;
-}
-
 export const menu: Menu[] = [
   { title: "Home", path: "/" },
   { title: "About", path: "/about" },
@@ -211,58 +168,6 @@ export const pages = [
     updatedAt: "2024/05/01",
   },
 ];
-
-export interface Cart {
-  id: string;
-  checkoutUrl: string;
-  cost: {
-    subtotalAmount: Money;
-    totalAmount: Money;
-    totalTaxAmount: Money;
-  };
-  lines: CartItem[];
-  totalQuantity: number;
-}
-
-export type CartItem = {
-  id: string;
-  quantity: number;
-  cost: {
-    totalAmount: Money;
-  };
-  merchandise: {
-    id: string;
-    title: string;
-    selectedOptions: {
-      name: string;
-      value: string;
-    }[];
-    product: Product;
-  };
-};
-
-export interface Money {
-  amount: string;
-  currencyCode: string;
-}
-
-export type Page = {
-  id: string;
-  title: string;
-  handle: string;
-  body: string;
-  bodySummary: string;
-  seo?: SEO;
-  createdAt: string;
-  updatedAt: string;
-};
-
-export type Image = {
-  url: string;
-  altText: string;
-  width: number;
-  height: number;
-};
 
 export const product = {
   id: "1",
@@ -362,3 +267,57 @@ export const product = {
   tags: [],
   updatedAt: "",
 };
+
+export const homepageItems = [
+  {
+    id: "1",
+    title: "Acme Drawstring T-Shirt",
+    featuredImage: "/images/7.webp",
+    handle: "Acme-Drawstring-TShirt",
+    price: "20",
+    currencyCode: "USD",
+    availableForSale: true,
+    description: "",
+    descriptionHtml: "",
+    images: [],
+    options: [],
+    variants: [],
+    tags: [],
+    updatedAt: "",
+    seo: { title: "", description: "" },
+  },
+  {
+    id: "2",
+    title: "Acme Drawstring Bag",
+    featuredImage: "/images/3.webp",
+    handle: "Acme-Drawstring-Bag",
+    price: "12",
+    currencyCode: "USD",
+    availableForSale: true,
+    description: "",
+    descriptionHtml: "",
+    images: [],
+    options: [],
+    variants: [],
+    tags: [],
+    updatedAt: "",
+    seo: { title: "", description: "" },
+  },
+  {
+    id: "3",
+    title: "Acme Cup",
+    featuredImage: "/images/4.webp",
+    handle: "Acme-Cup",
+    price: "15",
+    currencyCode: "USD",
+    availableForSale: true,
+    description: "",
+    descriptionHtml: "",
+    images: [],
+    options: [],
+    variants: [],
+    tags: [],
+    updatedAt: "",
+    seo: { title: "", description: "" },
+  },
+];

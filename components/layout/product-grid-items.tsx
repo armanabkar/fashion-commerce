@@ -1,7 +1,7 @@
 import Grid from "@/components/grid";
 import { GridTileImage } from "@/components/grid/tile";
 import Link from "next/link";
-import { Product } from "@/lib/testData";
+import { Product } from "@/lib/types";
 
 export default function ProductGridItems({
   products,

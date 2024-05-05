@@ -1,6 +1,7 @@
 import { GridTileImage } from "./tile";
 import Link from "next/link";
-import { Product } from "@/lib/testData";
+import { Product } from "@/lib/types";
+import { homepageItems } from "@/lib/testData";
 
 interface ThreeItemGridItemProp {
   item: Product;
@@ -52,42 +53,13 @@ export async function ThreeItemGrid() {
 
   // if (!homepageItems[0] || !homepageItems[1] || !homepageItems[2]) return null;
 
-  // const [firstProduct, secondProduct, thirdProduct] = homepageItems;
+  const [firstProduct, secondProduct, thirdProduct] = homepageItems;
 
   return (
     <section className="mx-auto grid max-w-screen-2xl gap-4 px-4 lg:px-6 pb-4 md:grid-cols-6 md:grid-rows-2">
-      <ThreeItemGridItem
-        size="full"
-        item={{
-          title: "Acme Drawstring T-Shirt",
-          featuredImage: "/images/7.webp",
-          handle: "Acme-Drawstring-TShirt",
-          price: "20",
-          currencyCode: "USD",
-        }}
-        priority={true}
-      />
-      <ThreeItemGridItem
-        size="half"
-        item={{
-          title: "Acme Drawstring Bag",
-          featuredImage: "/images/3.webp",
-          handle: "Acme-Drawstring-Bag",
-          price: "12",
-          currencyCode: "USD",
-        }}
-        priority={true}
-      />
-      <ThreeItemGridItem
-        size="half"
-        item={{
-          title: "Acme Cup",
-          featuredImage: "/images/4.webp",
-          handle: "Acme-Cup",
-          price: "15",
-          currencyCode: "USD",
-        }}
-      />
+      <ThreeItemGridItem size="full" item={firstProduct} priority={true} />
+      <ThreeItemGridItem size="half" item={secondProduct} priority={true} />
+      <ThreeItemGridItem size="half" item={thirdProduct} />
     </section>
   );
 }

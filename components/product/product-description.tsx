@@ -4,7 +4,7 @@ import Prose from "@/components/prose";
 import { Suspense } from "react";
 import { VariantSelector } from "./variant-selector";
 import clsx from "clsx";
-import { Product } from "@/lib/testData";
+import { Product } from "@/lib/types";
 
 export function ProductDescription({ product }: { product: Product }) {
   return (
