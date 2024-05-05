@@ -10,5 +10,4 @@
 - New fetching and caching paradigms
 - Dynamic OG images
 - Styling with Tailwind CSS
-- Checkout and payments with Shopify
 - Automatic light/dark mode based on system settings
