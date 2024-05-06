@@ -1,4 +1,4 @@
-import { Menu, Product } from "./types";
+import { Cart, Menu, Product } from "./types";
 
 export const products: Product[] = [
   {
@@ -441,3 +441,38 @@ export const homepageItems = [
     seo: { title: "", description: "" },
   },
 ];
+
+export const cartItems: Cart = {
+  id: "1",
+  checkoutUrl: "",
+  cost: {
+    subtotalAmount: { amount: "80", currencyCode: "USD" },
+    totalAmount: { amount: "80", currencyCode: "USD" },
+    totalTaxAmount: { amount: "0", currencyCode: "USD" },
+  },
+  lines: [
+    {
+      id: "1",
+      quantity: 1,
+      cost: { totalAmount: { amount: "20", currencyCode: "USD" } },
+      merchandise: {
+        id: "1",
+        title: "Black / XS",
+        selectedOptions: [{ name: "Black", value: "XS" }],
+        product: products[0],
+      },
+    },
+    {
+      id: "2",
+      quantity: 3,
+      cost: { totalAmount: { amount: "60", currencyCode: "USD" } },
+      merchandise: {
+        id: "1",
+        title: "White / M",
+        selectedOptions: [{ name: "color", value: "Black" }],
+        product: products[0],
+      },
+    },
+  ],
+  totalQuantity: 2,
+};

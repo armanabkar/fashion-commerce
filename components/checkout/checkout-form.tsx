@@ -6,8 +6,8 @@ export default function CheckoutForm() {
 
   return (
     <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-4">
-      <h2 className="text-xl font-bold">Contact</h2>
-      <div className="md:col-span-5">
+      <h2 className="text-xl font-bold md:col-span-4">Contact</h2>
+      <div className="md:col-span-4">
         <input
           type="text"
           name="email"
@@ -18,7 +18,7 @@ export default function CheckoutForm() {
           readOnly
         />
       </div>
-      <div className="md:col-span-5">
+      <div className="md:col-span-4">
         <input
           type="text"
           name="email"
@@ -30,8 +30,19 @@ export default function CheckoutForm() {
         />
       </div>
 
-      <h2 className="text-xl font-bold mt-6">Shipping Address</h2>
-      <div className="md:col-span-5">
+      <h2 className="text-xl font-bold mt-6 md:col-span-4">Shipping Address</h2>
+      <div className="md:col-span-2">
+        <input
+          type="text"
+          name="full_name"
+          id="full_name"
+          className="h-10 mt-1 outline outline-1 outline-gray-500/50 rounded px-4 w-full bg-white dark:bg-black focus:outline-blue-600"
+          value=""
+          placeholder="Full Name"
+          readOnly
+        />
+      </div>
+      <div className="md:col-span-2">
         <input
           type="text"
           name="full_name"
@@ -43,7 +54,7 @@ export default function CheckoutForm() {
         />
       </div>
 
-      <div className="md:col-span-5">
+      <div className="md:col-span-3">
         <input
           type="text"
           name="address"
@@ -67,7 +78,7 @@ export default function CheckoutForm() {
         />
       </div>
 
-      <div className="md:col-span-1">
+      <div className="md:col-span-2">
         <input
           name="state"
           id="state"
@@ -78,7 +89,7 @@ export default function CheckoutForm() {
         />
       </div>
 
-      <div className="md:col-span-3">
+      <div className="md:col-span-2">
         <input
           type="text"
           name="zipcode"
@@ -90,8 +101,17 @@ export default function CheckoutForm() {
         />
       </div>
 
-      <h2 className="text-xl font-bold mt-6">Shipping Method</h2>
-      <ul className="text-sm font-medium text-gray-900 bg-white dark:bg-black outline outline-1 outline-gray-500/50 rounded dark:text-white md:col-span-5">
+      <div className="md:col-span-4">
+        <textarea
+          id="message"
+          rows={4}
+          className="mt-1 p-2.5 w-full outline outline-1 outline-gray-500/50 rounded w-full bg-white dark:bg-black focus:outline-blue-600"
+          placeholder="Requests (Optional)"
+        />
+      </div>
+
+      <h2 className="text-xl font-bold mt-6 md:col-span-4">Shipping Method</h2>
+      <ul className="text-sm font-medium text-gray-900 bg-white dark:bg-black outline outline-1 outline-gray-500/50 rounded dark:text-white md:col-span-4">
         <li
           className={`w-full p-4 ${
             selectedOption == "economy"
@@ -149,9 +169,12 @@ export default function CheckoutForm() {
         </li>
       </ul>
 
-      <div className="md:col-span-5 text-right">
+      <div className="md:col-span-4 text-right">
+        <p className="mt-8 text-gray-400 font-medium">
+          Secure Payment with Lorem
+        </p>
         <div className="inline-flex items-end">
-          <button className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-4 px-6 rounded my-6">
+          <button className="py-3 px-6 my-4 block w-full rounded-full bg-blue-600 p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100">
             Submit
           </button>
         </div>

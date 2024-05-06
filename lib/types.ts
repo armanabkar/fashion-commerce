@@ -94,3 +94,7 @@ export interface Image {
   width: number;
   height: number;
 }
+
+export type MerchandiseSearchParams = {
+  [key: string]: string;
+};

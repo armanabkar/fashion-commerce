@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import Price from "@/components/price";
 import { DEFAULT_OPTION } from "@/lib/constants";
-import type { Cart } from "@/lib/types";
+import type { Cart, MerchandiseSearchParams } from "@/lib/types";
 import { createUrl } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,10 +12,6 @@ import CloseCart from "./close-cart";
 import { DeleteItemButton } from "./delete-item-button";
 import { EditItemQuantityButton } from "./edit-item-quantity-button";
 import OpenCart from "./open-cart";
-
-type MerchandiseSearchParams = {
-  [key: string]: string;
-};
 
 export default function CartModal({ cart }: { cart: Cart | undefined }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -190,7 +186,8 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                     </div>
                   </div>
                   <a
-                    href={cart.checkoutUrl}
+                    // href={cart.checkoutUrl}
+                    href="/checkout"
                     className="block w-full rounded-full bg-blue-600 p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
                   >
                     Proceed to Checkout
