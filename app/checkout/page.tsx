@@ -2,6 +2,7 @@ import Footer from "@/components/layout/footer";
 import CheckoutItems from "@/components/checkout/checkout-items";
 import CheckoutForm from "@/components/checkout/checkout-form";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -20,8 +21,12 @@ export default function Checkout() {
                 <CheckoutForm />
               </div>
 
-              <div className={`lg:order-2 order-1 text-gray-600 lg:col-span-2`}>
-                <CheckoutItems />
+              <div
+                className={`lg:order-2 ord er-1 text-gray-600 lg:col-span-2`}
+              >
+                <Suspense fallback={null}>
+                  <CheckoutItems />
+                </Suspense>
               </div>
             </div>
           </div>

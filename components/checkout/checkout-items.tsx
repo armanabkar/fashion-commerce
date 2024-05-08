@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { cartItems } from "@/lib/testData";
@@ -9,10 +9,20 @@ import { createUrl } from "@/lib/utils";
 import Link from "next/link";
 import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
-import { MerchandiseSearchParams } from "@/lib/types";
+import { CartItem, MerchandiseSearchParams } from "@/lib/types";
 
 export default function CheckoutItems() {
   const [hidden, setHidden] = useState(true);
+
+  // Simulates a delay for cartItems
+  const [cart, setCart] = useState<CartItem[]>([]);
+  useEffect(() => {
+    const simulateDelay = setTimeout(() => {
+      setCart(cartItems.lines);
+    }, 2000);
+
+    return () => clearTimeout(simulateDelay);
+  }, []);
 
   return (
     <>
@@ -28,7 +38,7 @@ export default function CheckoutItems() {
       </p>
 
       <div className={`${hidden ? "hidden lg:block" : "block"}`}>
-        {cartItems.lines.map((item, i) => {
+        {cart.map((item, i) => {
           const merchandiseSearchParams = {} as MerchandiseSearchParams;
 
           item.merchandise.selectedOptions.forEach(({ name, value }) => {

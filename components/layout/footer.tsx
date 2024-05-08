@@ -49,11 +49,9 @@ export default async function Footer() {
               : ""}{" "}
             All rights reserved.
           </p>
-          <hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-400 md:inline-block" />
-          <p>Designed with Love</p>
           <p className="md:ml-auto">
             <span className="text-black dark:text-white">
-              Crafted by ▲ {OWNER_NAME}
+              Designed by ▲ {OWNER_NAME}
             </span>
           </p>
         </div>
