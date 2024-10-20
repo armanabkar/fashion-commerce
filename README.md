@@ -1,6 +1,8 @@
 # Fashion Commerce
 
-####  Next.js 14 E-Commerce
+A high-performance, server-rendered Next.js App Router ecommerce application.
+
+####  Next.js Commerce
 
 - Next.js App Router
 - Optimized for SEO using Next.js's Metadata
