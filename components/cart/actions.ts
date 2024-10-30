@@ -15,7 +15,7 @@ export async function addItem(
   prevState: any,
   selectedVariantId: string | undefined
 ) {
-  let cartId = cookies().get("cartId")?.value;
+  let cartId = (await cookies()).get("cartId")?.value;
   let cart;
 
   if (cartId) {
@@ -25,7 +25,7 @@ export async function addItem(
   if (!cartId || !cart) {
     cart = await createCart();
     cartId = cart.id;
-    cookies().set("cartId", cartId);
+    (await cookies()).set("cartId", cartId);
   }
 
   if (!selectedVariantId) {
@@ -43,7 +43,7 @@ export async function addItem(
 }
 
 export async function removeItem(prevState: any, lineId: string) {
-  const cartId = cookies().get("cartId")?.value;
+  const cartId = (await cookies()).get("cartId")?.value;
 
   if (!cartId) {
     return "Missing cart ID";
@@ -65,7 +65,7 @@ export async function updateItemQuantity(
     quantity: number;
   }
 ) {
-  const cartId = cookies().get("cartId")?.value;
+  const cartId = (await cookies()).get("cartId")?.value;
 
   if (!cartId) {
     return "Missing cart ID";

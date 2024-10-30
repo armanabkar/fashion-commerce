@@ -1,11 +1,12 @@
 "use client";
+import { useActionState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 // import { removeItem } from "@/components/cart/actions";
 import LoadingDots from "@/components/loading-dots";
 // import type { CartItem } from "@/lib/shopify/types";
 import { CartItem } from "@/lib/types";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
