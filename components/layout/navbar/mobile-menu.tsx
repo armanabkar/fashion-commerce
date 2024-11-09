@@ -11,38 +11,37 @@ interface Menu {
   path: string;
 }
 
-export default function MobileMenu({ menu }: { menu: Menu[] }) {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+export default function MobileMenu({ menuItems }: { menuItems: Menu[] }) {
   const [isOpen, setIsOpen] = useState(false);
-  const openMobileMenu = () => setIsOpen(true);
-  const closeMobileMenu = () => setIsOpen(false);
+
+  const openMenu = () => setIsOpen(true);
+  const closeMenu = () => setIsOpen(false);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
-        setIsOpen(false);
+        closeMenu();
       }
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [isOpen]);
+  }, []);
 
   useEffect(() => {
-    setIsOpen(false);
-  }, [pathname, searchParams]);
+    closeMenu();
+  }, [usePathname(), useSearchParams()]);
 
   return (
     <>
       <button
-        onClick={openMobileMenu}
+        onClick={openMenu}
         aria-label="Open mobile menu"
         className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden dark:border-neutral-700 dark:text-white"
       >
         <Bars3Icon className="h-4" />
       </button>
       <Transition show={isOpen}>
-        <Dialog onClose={closeMobileMenu} className="relative z-50">
+        <Dialog onClose={closeMenu}>
           <Transition.Child
             as={Fragment}
             enter="transition-all ease-in-out duration-300"
@@ -67,7 +66,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
               <div className="p-4">
                 <button
                   className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white"
-                  onClick={closeMobileMenu}
+                  onClick={closeMenu}
                   aria-label="Close mobile menu"
                 >
                   <XMarkIcon className="h-6" />
@@ -78,15 +77,15 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                     <Search />
                   </Suspense>
                 </div>
-                {menu.length ? (
+                {menuItems.length ? (
                   <ul className="flex w-full flex-col">
-                    {menu.map((item: Menu) => (
+                    {menuItems.map((menuItem) => (
                       <li
                         className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white"
-                        key={item.title}
+                        key={menuItem.title}
                       >
-                        <Link href={item.path} onClick={closeMobileMenu}>
-                          {item.title}
+                        <Link href={menuItem.path} onClick={closeMenu}>
+                          {menuItem.title}
                         </Link>
                       </li>
                     ))}

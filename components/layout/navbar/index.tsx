@@ -13,16 +13,17 @@ interface Menu {
 }
 
 export default async function Navbar() {
-  const menu = [
+  const navigationMenu = [
     { title: "All", path: "/search" },
     { title: "T-Shirts", path: "/search/t-shirts" },
     { title: "Pants", path: "/search/pants" },
   ];
+
   return (
     <nav className="relative flex items-center justify-between p-4 lg:px-6">
       <div className="block flex-none md:hidden">
         <Suspense fallback={null}>
-          <MobileMenu menu={menu} />
+          <MobileMenu menuItems={navigationMenu} />
         </Suspense>
       </div>
       <div className="flex w-full items-center">
@@ -36,20 +37,20 @@ export default async function Navbar() {
               {SITE_NAME}
             </div>
           </Link>
-          {menu.length ? (
+          {navigationMenu.length > 0 && (
             <ul className="hidden gap-6 text-sm md:flex md:items-center">
-              {menu.map((item: Menu) => (
-                <li key={item.title}>
+              {navigationMenu.map((menuItem: Menu) => (
+                <li key={menuItem.title}>
                   <Link
-                    href={item.path}
+                    href={menuItem.path}
                     className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
                   >
-                    {item.title}
+                    {menuItem.title}
                   </Link>
                 </li>
               ))}
             </ul>
-          ) : null}
+          )}
         </div>
         <div className="hidden justify-center md:flex md:w-1/3">
           <Suspense fallback={<SearchSkeleton />}>

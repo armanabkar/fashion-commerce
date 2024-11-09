@@ -12,16 +12,15 @@ import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-but
 import { CartItem, MerchandiseSearchParams } from "@/lib/types";
 
 export default function CheckoutItems() {
-  const [hidden, setHidden] = useState(true);
-
-  // Simulates a delay for cartItems
+  const [isSummaryHidden, setIsSummaryHidden] = useState(true);
   const [cart, setCart] = useState<CartItem[]>([]);
+
   useEffect(() => {
-    const simulateDelay = setTimeout(() => {
+    const delay = setTimeout(() => {
       setCart(cartItems.lines);
     }, 2000);
 
-    return () => clearTimeout(simulateDelay);
+    return () => clearTimeout(delay);
   }, []);
 
   return (
@@ -29,32 +28,32 @@ export default function CheckoutItems() {
       <p className="lg:hidden flex justify-between items-center">
         <button
           className="text-blue-600 flex items-center gap-2"
-          onClick={() => setHidden(!hidden)}
+          onClick={() => setIsSummaryHidden(!isSummaryHidden)}
         >
           <ShoppingCartIcon className="h-4" />
-          {hidden ? "Show Order Summary" : "Hide Order Summary"}
+          {isSummaryHidden ? "Show Order Summary" : "Hide Order Summary"}
         </button>
         <span className="text-xl font-bold dark:text-white">$30.00</span>
       </p>
 
-      <div className={`${hidden ? "hidden lg:block" : "block"}`}>
-        {cart.map((item, i) => {
-          const merchandiseSearchParams = {} as MerchandiseSearchParams;
+      <div className={`${isSummaryHidden ? "hidden lg:block" : "block"}`}>
+        {cart.map((item, index) => {
+          const searchParams: MerchandiseSearchParams = {};
 
           item.merchandise.selectedOptions.forEach(({ name, value }) => {
             if (value !== DEFAULT_OPTION) {
-              merchandiseSearchParams[name.toLowerCase()] = value;
+              searchParams[name.toLowerCase()] = value;
             }
           });
 
-          const merchandiseUrl = createUrl(
+          const productUrl = createUrl(
             `/product/${item.merchandise.product.handle}`,
-            new URLSearchParams(merchandiseSearchParams)
+            new URLSearchParams(searchParams)
           );
 
           return (
             <li
-              key={i}
+              key={index}
               className="flex w-full flex-col border-b border-neutral-300 dark:border-neutral-700"
             >
               <div className="relative flex w-full flex-row justify-between px-1 py-4">
@@ -62,7 +61,7 @@ export default function CheckoutItems() {
                   <DeleteItemButton item={item} />
                 </div>
                 <Link
-                  href={merchandiseUrl}
+                  href={productUrl}
                   className="z-30 flex flex-row space-x-4"
                 >
                   <div className="relative h-16 w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
@@ -70,11 +69,7 @@ export default function CheckoutItems() {
                       className="h-full w-full object-cover"
                       width={64}
                       height={64}
-                      alt={
-                        // item.merchandise.product.featuredImage
-                        //   .altText || item.merchandise.product.title
-                        item.merchandise.product.title
-                      }
+                      alt={item.merchandise.product.title}
                       src={item.merchandise.product.featuredImage}
                     />
                   </div>
@@ -83,11 +78,11 @@ export default function CheckoutItems() {
                     <span className="leading-tight">
                       {item.merchandise.product.title}
                     </span>
-                    {item.merchandise.title !== DEFAULT_OPTION ? (
+                    {item.merchandise.title !== DEFAULT_OPTION && (
                       <p className="text-sm text-neutral-500 dark:text-neutral-400">
                         {item.merchandise.title}
                       </p>
-                    ) : null}
+                    )}
                   </div>
                 </Link>
                 <div className="flex h-16 flex-col justify-between">

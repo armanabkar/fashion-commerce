@@ -6,11 +6,9 @@ import { menu } from "@/lib/testData";
 
 const { COMPANY_NAME, SITE_NAME, OWNER_NAME } = process.env;
 
-export default async function Footer() {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
   const copyrightDate = 2024 + (currentYear > 2024 ? `-${currentYear}` : "");
-  const skeleton =
-    "w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700";
   const copyrightName = COMPANY_NAME || SITE_NAME || "";
 
   return (
@@ -28,12 +26,12 @@ export default async function Footer() {
         <Suspense
           fallback={
             <div className="flex h-[188px] w-[200px] flex-col gap-2">
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
+              <div className="w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700" />
+              <div className="w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700" />
+              <div className="w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700" />
+              <div className="w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700" />
+              <div className="w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700" />
+              <div className="w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700" />
             </div>
           }
         >

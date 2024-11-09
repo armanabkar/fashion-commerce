@@ -9,7 +9,20 @@ interface ThreeItemGridItemProp {
   priority?: boolean;
 }
 
-function ThreeItemGridItem({ item, size, priority }: ThreeItemGridItemProp) {
+function ThreeItemGridItem({
+  item,
+  size,
+  isPriority,
+}: {
+  item: Product;
+  size: "full" | "half";
+  isPriority?: boolean;
+}) {
+  const imageSizes = {
+    full: "(min-width: 768px) 66vw, 100vw",
+    half: "(min-width: 768px) 33vw, 100vw",
+  };
+
   return (
     <div
       className={
@@ -21,22 +34,17 @@ function ThreeItemGridItem({ item, size, priority }: ThreeItemGridItemProp) {
       <Link
         className="relative block aspect-square h-full w-full"
         href={`/product/${item.handle}`}
+        prefetch={isPriority}
       >
         <GridTileImage
           src={item.featuredImage}
           fill
-          sizes={
-            size === "full"
-              ? "(min-width: 768px) 66vw, 100vw"
-              : "(min-width: 768px) 33vw, 100vw"
-          }
-          priority={priority}
+          sizes={imageSizes[size]}
+          priority={isPriority}
           alt={item.title}
           label={{
             position: size === "full" ? "center" : "bottom",
-            title: item.title as string,
-            // amount: item.priceRange.maxVariantPrice.amount,
-            // currencyCode: item.priceRange.maxVariantPrice.currencyCode,
+            title: item.title,
             amount: item.price,
             currencyCode: item.currencyCode,
           }}
@@ -47,19 +55,21 @@ function ThreeItemGridItem({ item, size, priority }: ThreeItemGridItemProp) {
 }
 
 export async function ThreeItemGrid() {
-  // const homepageItems = await getCollectionProducts({
-  //   collection: "hidden-homepage-featured-items",
-  // });
+  const products = homepageItems;
 
-  // if (!homepageItems[0] || !homepageItems[1] || !homepageItems[2]) return null;
+  if (products.length < 3) return null;
 
-  const [firstProduct, secondProduct, thirdProduct] = homepageItems;
+  const [primaryProduct, secondaryProduct, tertiaryProduct] = products;
 
   return (
-    <section className="mx-auto grid max-w-screen-2xl gap-4 px-4 lg:px-6 pb-4 md:grid-cols-6 md:grid-rows-2">
-      <ThreeItemGridItem size="full" item={firstProduct} priority={true} />
-      <ThreeItemGridItem size="half" item={secondProduct} priority={true} />
-      <ThreeItemGridItem size="half" item={thirdProduct} />
+    <section className="mx-auto grid max-w-screen-2xl gap-4 px-4 lg:px-6 pb-4 md:grid-cols-6 md:grid-rows-2 lg:max-h-[calc(100vh-200px)]">
+      <ThreeItemGridItem size="full" item={primaryProduct} isPriority={true} />
+      <ThreeItemGridItem
+        size="half"
+        item={secondaryProduct}
+        isPriority={true}
+      />
+      <ThreeItemGridItem size="half" item={tertiaryProduct} />
     </section>
   );
 }

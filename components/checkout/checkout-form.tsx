@@ -2,29 +2,27 @@
 import { useState } from "react";
 
 export default function CheckoutForm() {
-  const [selectedOption, setSelectedOption] = useState("economy");
+  const [shippingOption, setShippingOption] = useState("economy");
 
   return (
     <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-4">
-      <h2 className="text-xl font-bold md:col-span-4">Contact</h2>
+      <h2 className="text-xl font-bold md:col-span-4">Contact Information</h2>
       <div className="md:col-span-4">
         <input
-          type="text"
+          type="email"
           name="email"
           id="email"
           className="h-10 mt-1 outline outline-1 outline-gray-500/50 rounded px-4 w-full bg-white dark:bg-black focus:outline-blue-600"
-          value=""
           placeholder="Email Address"
           readOnly
         />
       </div>
       <div className="md:col-span-4">
         <input
-          type="text"
-          name="email"
-          id="email"
+          type="tel"
+          name="phone"
+          id="phone"
           className="h-10 mt-1 outline outline-1 outline-gray-500/50 rounded px-4 w-full bg-white dark:bg-black focus:outline-blue-600"
-          value=""
           placeholder="Mobile Phone Number"
           readOnly
         />
@@ -34,10 +32,9 @@ export default function CheckoutForm() {
       <div className="md:col-span-2">
         <input
           type="text"
-          name="full_name"
-          id="full_name"
+          name="fullName"
+          id="fullName"
           className="h-10 mt-1 outline outline-1 outline-gray-500/50 rounded px-4 w-full bg-white dark:bg-black focus:outline-blue-600"
-          value=""
           placeholder="Full Name"
           readOnly
         />
@@ -45,10 +42,9 @@ export default function CheckoutForm() {
       <div className="md:col-span-2">
         <input
           type="text"
-          name="full_name"
-          id="full_name"
+          name="fullName"
+          id="fullName"
           className="h-10 mt-1 outline outline-1 outline-gray-500/50 rounded px-4 w-full bg-white dark:bg-black focus:outline-blue-600"
-          value=""
           placeholder="Full Name"
           readOnly
         />
@@ -60,7 +56,6 @@ export default function CheckoutForm() {
           name="address"
           id="address"
           className="h-10 mt-1 outline outline-1 outline-gray-500/50 rounded px-4 w-full bg-white dark:bg-black focus:outline-blue-600"
-          value=""
           placeholder="Address"
           readOnly
         />
@@ -72,7 +67,6 @@ export default function CheckoutForm() {
           name="city"
           id="city"
           className="h-10 mt-1 outline outline-1 outline-gray-500/50 rounded px-4 w-full bg-white dark:bg-black focus:outline-blue-600"
-          value=""
           placeholder="City"
           readOnly
         />
@@ -92,8 +86,8 @@ export default function CheckoutForm() {
       <div className="md:col-span-2">
         <input
           type="text"
-          name="zipcode"
-          id="zipcode"
+          name="zipCode"
+          id="zipCode"
           className="h-10 mt-1 outline outline-1 outline-gray-500/50 rounded px-4 w-full bg-white dark:bg-black focus:outline-blue-600"
           placeholder="ZIP Code"
           value=""
@@ -103,10 +97,10 @@ export default function CheckoutForm() {
 
       <div className="md:col-span-4">
         <textarea
-          id="message"
+          id="specialInstructions"
           rows={4}
           className="mt-1 p-2.5 w-full outline outline-1 outline-gray-500/50 rounded w-full bg-white dark:bg-black focus:outline-blue-600"
-          placeholder="Requests (Optional)"
+          placeholder="Special Instructions (Optional)"
         />
       </div>
 
@@ -114,7 +108,7 @@ export default function CheckoutForm() {
       <ul className="text-sm font-medium text-gray-900 bg-white dark:bg-black outline outline-1 outline-gray-500/50 rounded dark:text-white md:col-span-4">
         <li
           className={`w-full p-4 ${
-            selectedOption == "economy"
+            shippingOption == "economy"
               ? "outline outline-2 outline-blue-600 rounded"
               : "border-b border-gray-500/50"
           }`}
@@ -127,7 +121,7 @@ export default function CheckoutForm() {
                 value="economy"
                 name="list-radio"
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 mr-2 mt-1"
-                onChange={(e) => setSelectedOption(e.target.value)}
+                onChange={(e) => setShippingOption(e.target.value)}
                 defaultChecked
               />
               <p className="w-full text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -142,7 +136,7 @@ export default function CheckoutForm() {
         </li>
         <li
           className={`w-full p-4 ${
-            selectedOption == "standard"
+            shippingOption == "standard"
               ? "outline outline-2 outline-blue-600 rounded"
               : "border-b border-gray-500/50"
           }`}
@@ -155,7 +149,7 @@ export default function CheckoutForm() {
                 value="standard"
                 name="list-radio"
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 mr-2 mt-1"
-                onChange={(e) => setSelectedOption(e.target.value)}
+                onChange={(e) => setShippingOption(e.target.value)}
               />
               <p className="w-full text-sm font-medium text-gray-900 dark:text-gray-300">
                 Standard <br />
