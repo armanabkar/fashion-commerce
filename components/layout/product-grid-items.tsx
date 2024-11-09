@@ -9,10 +9,14 @@ export default function ProductGridItems({
   products: Product[];
 }) {
   return (
-    <Grid>
-      {products.map((product) => (
-        <Grid.Item key={product.id}>
-          <Link href={`/product/${product.handle}`}>
+    <>
+      {products.map((product, index) => (
+        <Grid.Item key={index} className="animate-fadeIn">
+          <Link
+            className="relative inline-block h-full w-full"
+            href={`/product/${product.handle}`}
+            prefetch={true}
+          >
             <GridTileImage
               alt={product.title}
               label={{
@@ -27,6 +31,6 @@ export default function ProductGridItems({
           </Link>
         </Grid.Item>
       ))}
-    </Grid>
+    </>
   );
 }
