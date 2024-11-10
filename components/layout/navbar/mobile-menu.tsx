@@ -11,37 +11,38 @@ interface Menu {
   path: string;
 }
 
-export default function MobileMenu({ menuItems }: { menuItems: Menu[] }) {
+export default function MobileMenu({ menu }: { menu: Menu[] }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
-
-  const openMenu = () => setIsOpen(true);
-  const closeMenu = () => setIsOpen(false);
+  const openMobileMenu = () => setIsOpen(true);
+  const closeMobileMenu = () => setIsOpen(false);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
-        closeMenu();
+        setIsOpen(false);
       }
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [isOpen]);
 
   useEffect(() => {
-    closeMenu();
-  }, [usePathname(), useSearchParams()]);
+    setIsOpen(false);
+  }, [pathname, searchParams]);
 
   return (
     <>
       <button
-        onClick={openMenu}
+        onClick={openMobileMenu}
         aria-label="Open mobile menu"
         className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden dark:border-neutral-700 dark:text-white"
       >
         <Bars3Icon className="h-4" />
       </button>
       <Transition show={isOpen}>
-        <Dialog onClose={closeMenu}>
+        <Dialog onClose={closeMobileMenu} className="relative z-50">
           <Transition.Child
             as={Fragment}
             enter="transition-all ease-in-out duration-300"
@@ -66,7 +67,7 @@ export default function MobileMenu({ menuItems }: { menuItems: Menu[] }) {
               <div className="p-4">
                 <button
                   className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white"
-                  onClick={closeMenu}
+                  onClick={closeMobileMenu}
                   aria-label="Close mobile menu"
                 >
                   <XMarkIcon className="h-6" />
@@ -77,15 +78,19 @@ export default function MobileMenu({ menuItems }: { menuItems: Menu[] }) {
                     <Search />
                   </Suspense>
                 </div>
-                {menuItems.length ? (
+                {menu.length ? (
                   <ul className="flex w-full flex-col">
-                    {menuItems.map((menuItem) => (
+                    {menu.map((item: Menu) => (
                       <li
                         className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white"
-                        key={menuItem.title}
+                        key={item.title}
                       >
-                        <Link href={menuItem.path} onClick={closeMenu}>
-                          {menuItem.title}
+                        <Link
+                          href={item.path}
+                          prefetch={true}
+                          onClick={closeMobileMenu}
+                        >
+                          {item.title}
                         </Link>
                       </li>
                     ))}

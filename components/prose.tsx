@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import type { FunctionComponent } from "react";
 
 interface TextProps {
   html: string;

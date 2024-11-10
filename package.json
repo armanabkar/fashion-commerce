@@ -1,7 +1,13 @@
 {
   "name": "fashion-commerce",
   "version": "1.0.0",
+  "description": "A Fashion-Forward E-commerce Experience Built with Next.js",
+  "license": "MIT",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/armanabkar/fashion-commerce.git"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",

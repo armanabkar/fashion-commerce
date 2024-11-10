@@ -20,7 +20,7 @@ export function GridTileImage({
   return (
     <div
       className={clsx(
-        "group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white dark:bg-black",
+        "group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-blue-600 dark:bg-black",
         {
           relative: label,
           "border-2 border-blue-600": isActive,
@@ -31,12 +31,10 @@ export function GridTileImage({
       {imageProps.src ? (
         // eslint-disable-next-line jsx-a11y/alt-text -- `alt` is inherited from `props`, which is being enforced with TypeScript
         <Image
-          className={clsx(
-            "relative h-full w-full object-contain",
-            interactive
-              ? "transition duration-300 ease-in-out group-hover:scale-105"
-              : ""
-          )}
+          className={clsx("relative h-full w-full object-contain", {
+            "transition duration-300 ease-in-out group-hover:scale-105":
+              interactive,
+          })}
           {...imageProps}
         />
       ) : null}

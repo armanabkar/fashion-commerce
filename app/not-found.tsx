@@ -1,5 +1,17 @@
 import Link from "next/link";
 
+/**
+ * A 404 page that displays a centered message with a link to return home.
+ *
+ * The page is a simple, centered display of a heading and a paragraph.
+ * The heading shows the 404 status code and the paragraph shows a message and
+ * a link to return home.
+ *
+ * The component is a server-side rendered page and is client-side rendered
+ * with Next.js.
+ *
+ * @returns {JSX.Element} The 404 page component.
+ */
 export default function NotFound() {
   return (
     <div className="h-screen text-center mt-24">

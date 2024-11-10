@@ -1,5 +1,12 @@
 "use client";
 
+/**
+ * A fallback component to render when there is an error in the app.
+ *
+ * @param {object} props
+ * @param {function} props.onReset - Called when the "Try Again" button is clicked.
+ * @returns {JSX.Element}
+ */
 export default function ErrorFallback({ onReset }: { onReset: () => void }) {
   return (
     <div className="mx-auto my-4 flex max-w-xl flex-col rounded-lg border border-neutral-200 bg-white p-8 md:p-12 dark:border-neutral-800 dark:bg-black">
