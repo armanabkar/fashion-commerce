@@ -1,5 +1,17 @@
 import LogoIcon from "./icons/logo";
 
+/**
+ * A square logo component with a responsive size.
+ *
+ * @example
+ * import LogoSquare from "@/components/logo-square";
+ *
+ * <LogoSquare />
+ *
+ * @param {object} props The component props.
+ * @param {string} [props.size="sm"] The size of the logo.
+ *   Options are "sm" for a 30px logo or undefined for a 40px logo.
+ */
 export default function LogoSquare({
   size: logoSize,
 }: {

@@ -17,6 +17,7 @@ This project uses React Server Components, Server Actions, Suspense, useOptimist
 - Dynamic OG Images
 - Styling with Tailwind CSS
 - Automatic light/dark mode based on system settings
+- Comprehensive test suite using Vitest to ensure code quality and reliability
 
 #### Project Structure
 

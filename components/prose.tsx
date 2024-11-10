@@ -6,6 +6,15 @@ interface TextProps {
   className?: string;
 }
 
+/**
+ * A functional component that renders HTML content within a styled div.
+ *
+ * @param {Object} props - The properties object.
+ * @param {string} props.html - The HTML content to be rendered inside the div.
+ * @param {string} [props.className] - An optional custom class name to be applied for additional styling.
+ *
+ * @returns {JSX.Element} A div element with HTML content and applied styles.
+ */
 const Prose: React.FC<{
   html: string;
   className?: string;

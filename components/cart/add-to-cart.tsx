@@ -1,10 +1,10 @@
 import { useActionState } from "react";
-"use client";
+("use client");
 import { PlusIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { addItem } from "@/components/cart/actions";
 import LoadingDots from "@/components/loading-dots";
-import { ProductVariant } from "@/lib/shopify/types";
+import { ProductVariant } from "@/lib/types";
 import { useSearchParams } from "next/navigation";
 import { useFormStatus } from "react-dom";
 

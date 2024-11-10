@@ -1,72 +1,76 @@
 import { ReadonlyURLSearchParams } from "next/navigation";
 
 /**
- * Creates a full URL from a pathname and searchParams.
+ * Creates a URL by combining a pathname and URLSearchParams.
  *
- * @param pathname The base path of the URL.
- * @param searchParams The search parameters to include in the URL.
- * @returns A full URL, including the search parameters if they are present.
+ * @param pathname - The pathname to use for the URL
+ * @param params - The URLSearchParams to use for the URL
+ * @returns A URL string
  */
 export const createUrl = (
   pathname: string,
-  searchParams: URLSearchParams | ReadonlyURLSearchParams
+  params: URLSearchParams | ReadonlyURLSearchParams
 ): string => {
-  const queryString = searchParams.toString();
-  return `${pathname}${queryString ? `?${queryString}` : ""}`;
+  const paramsString = params.toString();
+  const queryString = `${paramsString.length ? "?" : ""}${paramsString}`;
+
+  return `${pathname}${queryString}`;
 };
 
 /**
- * Ensures a string starts with a prefix.
+ * Ensures that a given string starts with the specified prefix.
  *
- * If the input string starts with the prefix, it is returned unchanged.
- * Otherwise, the prefix is prepended to the input string.
- *
- * @param input The input string to check.
- * @param prefix The prefix to ensure the string starts with.
- * @returns The input string with the prefix prepended if necessary.
+ * @param stringToCheck - The string to check and potentially modify
+ * @param startsWith - The prefix to ensure the string starts with
+ * @returns The original string if it already starts with the prefix,
+ * or the string with the prefix prepended otherwise
  */
-export const ensureStartsWith = (input: string, prefix: string): string => {
-  return input.startsWith(prefix) ? input : `${prefix}${input}`;
-};
+export const ensureStartsWith = (
+  stringToCheck: string,
+  startsWith: string
+): string =>
+  stringToCheck.startsWith(startsWith)
+    ? stringToCheck
+    : `${startsWith}${stringToCheck}`;
 
 /**
- * Validates that the required environment variables are set.
- *
- * Throws an error if any of the required variables are not set.
- *
- * Required environment variables:
- * - `SHOPIFY_STORE_DOMAIN`
- * - `SHOPIFY_STOREFRONT_ACCESS_TOKEN`
- *
- * The `SHOPIFY_STORE_DOMAIN` environment variable must not contain any
- * square brackets, as this can cause issues with the Shopify API.
- *
- * This function is intended to be used in a server-side environment, such as
- * a Next.js API route or a Vercel serverless function.
+ * Validates the presence and format of required environment variables.
+ * Throws an error if any required environment variable is missing or improperly formatted.
  */
-export const validateEnvironmentVariables = (): void => {
-  const REQUIRED_ENV_VARS = [
+export const validateEnvironmentVariables = () => {
+  // List of environment variables required for the application to function
+  const requiredEnvironmentVariables = [
     "SHOPIFY_STORE_DOMAIN",
     "SHOPIFY_STOREFRONT_ACCESS_TOKEN",
   ];
 
-  const missingVars = REQUIRED_ENV_VARS.filter(
-    (envVar) => !process.env[envVar]
-  );
+  // Array to keep track of any missing environment variables
+  const missingEnvironmentVariables = [] as string[];
 
-  if (missingVars.length > 0) {
+  // Iterate through the required environment variables to check their existence
+  requiredEnvironmentVariables.forEach((envVar) => {
+    if (!process.env[envVar]) {
+      // Add the missing environment variable to the array
+      missingEnvironmentVariables.push(envVar);
+    }
+  });
+
+  // If there are any missing environment variables, throw an error with details
+  if (missingEnvironmentVariables.length) {
     throw new Error(
-      `Missing environment variables: ${missingVars.join(
-        ", "
-      )}. Please refer to https://vercel.com/docs/integrations/shopify#configure-environment-variables for more information.`
+      `The following environment variables are missing. Your site will not work without them. Read more: https://vercel.com/docs/integrations/shopify#configure-environment-variables\n\n${missingEnvironmentVariables.join(
+        "\n"
+      )}\n`
     );
   }
 
-  const storeDomain = process.env.SHOPIFY_STORE_DOMAIN || "";
-
-  if (storeDomain.includes("[") || storeDomain.includes("]")) {
+  // Check if the SHOPIFY_STORE_DOMAIN contains brackets, which are invalid
+  if (
+    process.env.SHOPIFY_STORE_DOMAIN?.includes("[") ||
+    process.env.SHOPIFY_STORE_DOMAIN?.includes("]")
+  ) {
     throw new Error(
-      "The `SHOPIFY_STORE_DOMAIN` environment variable contains invalid characters (brackets). Please remove them."
+      "Your `SHOPIFY_STORE_DOMAIN` environment variable includes brackets (ie. `[` and / or `]`). Your site will not work with them there. Please remove them."
     );
   }
 };

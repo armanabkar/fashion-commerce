@@ -5,6 +5,23 @@ export type Props = {
   title?: string;
 };
 
+/**
+ * Generates an Open Graph image with the given title.
+ *
+ * This function creates an Open Graph image using a specified title, or falls
+ * back to the site's name if no title is provided. The image is designed with
+ * a black background, a centrally positioned logo, and the title displayed
+ * below the logo in large white text.
+ *
+ * The generated image has a resolution of 1200x630 pixels, and the title is
+ * rendered using the "Inter" font with bold weight.
+ *
+ * @param titleOverride - An optional title to be used in the image. If not
+ * provided, the site's name from the environment variables is used.
+ *
+ * @returns A Promise that resolves to an ImageResponse object containing the
+ * generated Open Graph image.
+ */
 export default async function getOpenGraphImage({
   title: titleOverride,
 }: { title?: string } = {}): Promise<ImageResponse> {

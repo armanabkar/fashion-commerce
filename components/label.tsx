@@ -1,6 +1,29 @@
 import clsx from "clsx";
 import Price from "./price";
 
+/**
+ * A label component that displays a title and price.
+ *
+ * This component is designed to be used on top of an image, like a product
+ * image. It uses absolute positioning to position the label at the bottom of
+ * its parent container. The label is a rounded rectangle with a white
+ * background and black text. The price is displayed on the right side of the
+ * label and is rounded.
+ *
+ * The component accepts the following props:
+ *
+ * - `title`: The title of the product.
+ * - `amount`: The price of the product as a string.
+ * - `currencyCode`: The currency code of the price.
+ * - `position`: The position of the label. Can be either `"bottom"` or `"center"`.
+ *    Defaults to `"bottom"`.
+ *
+ * The component uses the `clsx` library to conditionally apply CSS classes
+ * based on the props. The classes are defined in the `tailwind.config.js` file.
+ *
+ * @example
+ * <Label title="Product Title" amount="19.99" currencyCode="USD" />
+ */
 const Label = ({
   title,
   amount,
