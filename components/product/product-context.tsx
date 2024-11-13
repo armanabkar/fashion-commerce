@@ -6,6 +6,7 @@ import React, {
   useContext,
   useMemo,
   useOptimistic,
+  useCallback,
 } from "react";
 
 type ProductState = {
@@ -22,6 +23,16 @@ type ProductContextType = {
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
+/**
+ * Provides the product context to its children, allowing them to access
+ * and update the product state, which includes product options and images.
+ * 
+ * This component initializes the product state from URL search parameters
+ * and provides methods to update product options and the selected image
+ * optimistically.
+ * 
+ * @param children - The React components that will consume the product context.
+ */
 export function ProductProvider({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams();
 
@@ -41,17 +52,23 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
     })
   );
 
-  const updateOption = (name: string, value: string) => {
-    const newState = { [name]: value };
-    setOptimisticState(newState);
-    return { ...state, ...newState };
-  };
+  const updateOption = useCallback(
+    (name: string, value: string) => {
+      const newState = { [name]: value };
+      setOptimisticState(newState);
+      return { ...state, ...newState };
+    },
+    [state, setOptimisticState]
+  );
 
-  const updateImage = (index: string) => {
-    const newState = { image: index };
-    setOptimisticState(newState);
-    return { ...state, ...newState };
-  };
+  const updateImage = useCallback(
+    (index: string) => {
+      const newState = { image: index };
+      setOptimisticState(newState);
+      return { ...state, ...newState };
+    },
+    [state, setOptimisticState]
+  );
 
   const value = useMemo(
     () => ({
@@ -59,7 +76,7 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
       updateOption,
       updateImage,
     }),
-    [state]
+    [state, updateOption, updateImage]
   );
 
   return (

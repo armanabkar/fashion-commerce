@@ -5,7 +5,7 @@ export default defineConfig({
     environment: "node",
     include: ["**/*.test.ts"],
     timeout: 30000, // 30 seconds
-    threads: false,
+    threads: true,
     concurrency: 5,
     coverage: {
       reporter: ["text", "lcov", "clover"],
