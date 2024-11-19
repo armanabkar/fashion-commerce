@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import {
   products,
   menu,
@@ -6,6 +6,7 @@ import {
   product,
   homepageItems,
   cartItems,
+  getProducts,
 } from "../../lib/testData";
 
 describe("Products", () => {
@@ -143,5 +144,34 @@ describe("CartItems", () => {
         expect.arrayContaining(lineItemKeys)
       );
     });
+  });
+});
+
+// Mock product data
+const mockProducts = products;
+
+// Mock the products to use in the test
+vi.mock("../getProducts", () => ({
+  getProducts: vi.fn(() => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(mockProducts);
+      }, 3000);
+    });
+  }),
+}));
+
+describe("getProducts", () => {
+  it("should return the products after a delay", async () => {
+    const result = await getProducts();
+    expect(result).toEqual(mockProducts);
+  });
+
+  it("should resolve within the specified timeout", async () => {
+    const start = Date.now();
+    await getProducts();
+    const duration = Date.now() - start;
+    expect(duration).toBeGreaterThanOrEqual(3000);
+    expect(duration).toBeLessThan(4000); // Ensuring the function doesn't take excessively long
   });
 });

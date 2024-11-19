@@ -46,11 +46,6 @@ To get started with the application, follow these steps:
 2. Install dependencies: `npm install`
 3. Start the application: `npm run dev`
 
-### Deployment
-
-- The application is deployed using Next.js's built-in deployment features.
-- The `runtime` configuration is set to `edge` for faster rendering.
-
 ### Contributing
 
 To contribute to the project, follow these steps:

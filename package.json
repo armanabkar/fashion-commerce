@@ -1,5 +1,6 @@
 {
   "name": "fashion-commerce",
+  "type": "module",
   "version": "1.0.0",
   "description": "A Fashion-Forward E-commerce Experience Built with Next.js",
   "license": "MIT",
@@ -27,11 +28,16 @@
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.13",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
     "@types/node": "^20",
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "@vitejs/plugin-react": "^4.3.3",
     "eslint": "^8",
     "eslint-config-next": "15.0.2",
+    "jsdom": "^25.0.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
