@@ -474,7 +474,7 @@ export const cartItems: Cart = {
       },
     },
   ],
-  totalQuantity: 2,
+  totalQuantity: 4,
 };
 
 /**

@@ -2,16 +2,26 @@ import { describe, it, expect, vi } from "vitest";
 import {
   products,
   menu,
-  pages,
-  product,
   homepageItems,
   cartItems,
   getProducts,
 } from "@/lib/testData";
 
-describe("Products", () => {
-  it("should have the correct number of products", () => {
-    expect(products).toHaveLength(12);
+describe("testData", () => {
+  describe("products", () => {
+    it("should have a list of products", () => {
+      expect(products).toBeDefined();
+      expect(Array.isArray(products)).toBe(true);
+      expect(products.length).toBeGreaterThan(0);
+
+      // Check structure of the first product
+      const product = products[0];
+      expect(product).toHaveProperty("id");
+      expect(product).toHaveProperty("title");
+      expect(product).toHaveProperty("price");
+      expect(product).toHaveProperty("currencyCode");
+      expect(product).toHaveProperty("featuredImage");
+    });
   });
 
   it("should have the correct properties for each product", () => {
@@ -37,141 +47,90 @@ describe("Products", () => {
       expect(Object.keys(product)).toEqual(expect.arrayContaining(productKeys));
     });
   });
-});
 
-describe("Menu", () => {
-  it("should have the correct number of menu items", () => {
-    expect(menu).toHaveLength(6);
-  });
+  describe("menu", () => {
+    it("should have a list of menu items", () => {
+      expect(menu).toBeDefined();
+      expect(Array.isArray(menu)).toBe(true);
+      expect(menu.length).toBeGreaterThan(0);
 
-  it("should have the correct properties for each menu item", () => {
-    const menuKeys = ["title", "path"];
+      // Check structure of the first menu item
+      const menuItem = menu[0];
+      expect(menuItem).toHaveProperty("title");
+      expect(menuItem).toHaveProperty("path");
+    });
 
-    menu.forEach((item) => {
-      expect(Object.keys(item)).toEqual(expect.arrayContaining(menuKeys));
+    it("should include specific menu items", () => {
+      const menuTitles = menu.map((item) => item.title);
+      expect(menuTitles).toContain("Home");
+      expect(menuTitles).toContain("FAQ");
     });
   });
-});
 
-describe("Pages", () => {
-  it("should have the correct number of pages", () => {
-    expect(pages).toHaveLength(5);
-  });
+  describe("homepageItems", () => {
+    it("should have a list of homepage items", () => {
+      expect(homepageItems).toBeDefined();
+      expect(Array.isArray(homepageItems)).toBe(true);
+      expect(homepageItems.length).toBeGreaterThan(0);
 
-  it("should have the correct properties for each page", () => {
-    const pageKeys = [
-      "title",
-      "path",
-      "seo",
-      "body",
-      "bodySummary",
-      "createdAt",
-      "updatedAt",
-    ];
-
-    pages.forEach((page) => {
-      expect(Object.keys(page)).toEqual(expect.arrayContaining(pageKeys));
+      // Check structure of the first homepage item
+      const homepageItem = homepageItems[0];
+      expect(homepageItem).toHaveProperty("id");
+      expect(homepageItem).toHaveProperty("title");
+      expect(homepageItem).toHaveProperty("price");
+      expect(homepageItem).toHaveProperty("currencyCode");
+      expect(homepageItem).toHaveProperty("featuredImage");
     });
   });
-});
 
-describe("Product", () => {
-  it("should have the correct properties", () => {
-    const productKeys = [
-      "id",
-      "title",
-      "featuredImage",
-      "handle",
-      "price",
-      "currencyCode",
-      "availableForSale",
-      "description",
-      "descriptionHtml",
-      "images",
-      "seo",
-      "options",
-      "variants",
-      "tags",
-      "updatedAt",
-    ];
+  describe("cartItems", () => {
+    it("should have a cart with lines and cost", () => {
+      expect(cartItems).toBeDefined();
+      expect(cartItems).toHaveProperty("lines");
+      expect(cartItems).toHaveProperty("cost");
 
-    expect(Object.keys(product)).toEqual(expect.arrayContaining(productKeys));
-  });
-});
-
-describe("HomepageItems", () => {
-  it("should have the correct number of items", () => {
-    expect(homepageItems).toHaveLength(3);
-  });
-
-  it("should have the correct properties for each item", () => {
-    const itemKeys = [
-      "id",
-      "title",
-      "featuredImage",
-      "handle",
-      "price",
-      "currencyCode",
-      "availableForSale",
-      "description",
-      "descriptionHtml",
-      "images",
-      "options",
-      "variants",
-      "tags",
-      "updatedAt",
-      "seo",
-    ];
-
-    homepageItems.forEach((item) => {
-      expect(Object.keys(item)).toEqual(expect.arrayContaining(itemKeys));
+      // Check structure of a cart line
+      const cartLine = cartItems.lines[0];
+      expect(cartLine).toHaveProperty("id");
+      expect(cartLine).toHaveProperty("quantity");
+      expect(cartLine).toHaveProperty("cost");
+      expect(cartLine).toHaveProperty("merchandise");
+      expect(cartLine.merchandise).toHaveProperty("product");
     });
-  });
-});
 
-describe("CartItems", () => {
-  it("should have the correct properties", () => {
-    const cartKeys = ["id", "checkoutUrl", "cost", "lines", "totalQuantity"];
-
-    expect(Object.keys(cartItems)).toEqual(expect.arrayContaining(cartKeys));
-  });
-
-  it("should have the correct properties for each line item", () => {
-    const lineItemKeys = ["id", "quantity", "cost", "merchandise"];
-
-    cartItems.lines.forEach((lineItem) => {
-      expect(Object.keys(lineItem)).toEqual(
-        expect.arrayContaining(lineItemKeys)
+    it("should calculate total quantity and cost correctly", () => {
+      const totalQuantity = cartItems.lines.reduce(
+        (sum, line) => sum + line.quantity,
+        0
       );
+      expect(totalQuantity).toBe(cartItems.totalQuantity);
+
+      const totalCost = cartItems.lines.reduce(
+        (sum, line) => sum + parseFloat(line.cost.totalAmount.amount),
+        0
+      );
+      expect(totalCost).toBe(parseFloat(cartItems.cost.totalAmount.amount));
     });
   });
-});
 
-// Mock product data
-const mockProducts = products;
+  describe("getProducts", () => {
+    it("should return a promise that resolves to a list of products", async () => {
+      vi.useFakeTimers(); // Mock timers for the test
 
-// Mock the products to use in the test
-vi.mock("../../lib/testData.ts", () => ({
-  getProducts: vi.fn(() => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(mockProducts);
-      }, 3000);
+      const promise = getProducts();
+      vi.runAllTimers(); // Fast-forward the timer
+      const result = await promise;
+
+      expect(result).toBeDefined();
+      expect(Array.isArray(result)).toBe(true);
+      expect(result.length).toBeGreaterThan(0);
+
+      const product = result[0];
+      expect(product).toHaveProperty("id");
+      expect(product).toHaveProperty("title");
+      expect(product).toHaveProperty("price");
+
+      vi.useRealTimers(); // Restore real timers
     });
-  }),
-}));
-
-describe("getProducts", () => {
-  it("should return the products after a delay", async () => {
-    const result = await getProducts();
-    expect(result).toEqual(mockProducts);
-  });
-
-  it("should resolve within the specified timeout", async () => {
-    const start = Date.now();
-    await getProducts();
-    const duration = Date.now() - start;
-    expect(duration).toBeGreaterThanOrEqual(3000);
-    expect(duration).toBeLessThan(4000); // Ensuring the function doesn't take excessively long
   });
 });

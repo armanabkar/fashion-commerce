@@ -1,4 +1,3 @@
-// File: tests/components/ThreeItemGrid.test.tsx
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import { ThreeItemGrid } from "@/components/grid/three-items";

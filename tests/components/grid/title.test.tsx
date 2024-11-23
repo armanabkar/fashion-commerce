@@ -1,4 +1,3 @@
-// File: tests/components/GridTileImage.test.tsx
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import { GridTileImage } from "@/components/grid/tile";
