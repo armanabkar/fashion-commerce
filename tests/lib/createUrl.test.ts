@@ -2,7 +2,7 @@ import {
   createUrl,
   ensureStartsWith,
   validateEnvironmentVariables,
-} from "../../lib/utils";
+} from "@/lib/utils";
 import { describe, it, expect, beforeEach } from "vitest";
 
 describe("createUrl", () => {

@@ -7,7 +7,7 @@ import {
   homepageItems,
   cartItems,
   getProducts,
-} from "../../lib/testData";
+} from "@/lib/testData";
 
 describe("Products", () => {
   it("should have the correct number of products", () => {
@@ -151,7 +151,7 @@ describe("CartItems", () => {
 const mockProducts = products;
 
 // Mock the products to use in the test
-vi.mock("../getProducts", () => ({
+vi.mock("../../lib/testData.ts", () => ({
   getProducts: vi.fn(() => {
     return new Promise((resolve) => {
       setTimeout(() => {

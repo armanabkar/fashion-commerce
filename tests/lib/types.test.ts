@@ -11,7 +11,7 @@ import {
   Page,
   Image,
   MerchandiseSearchParams,
-} from "../../lib/types";
+} from "@/lib/types";
 
 describe("Product", () => {
   it("should have the correct properties", () => {

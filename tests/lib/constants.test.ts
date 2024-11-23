@@ -7,7 +7,7 @@ import {
   HIDDEN_PRODUCT_TAG,
   DEFAULT_OPTION,
   SHOPIFY_GRAPHQL_API_ENDPOINT,
-} from "../../lib/constants";
+} from "@/lib/constants";
 
 describe("SortFilterItem", () => {
   it("should have the correct properties", () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Price from "../../components/price";
+import Price from "@/components/price";
 import { describe, expect, it } from "vitest";
 
 describe("Price component", () => {
