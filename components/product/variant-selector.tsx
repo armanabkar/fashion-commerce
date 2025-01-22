@@ -1,14 +1,8 @@
 "use client";
 import clsx from "clsx";
-import { ProductOption, ProductVariant } from "@/lib/types";
+import { Combination, ProductOption, ProductVariant } from "@/lib/types";
 import { createUrl } from "@/lib/utils";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-
-type Combination = {
-  id: string;
-  availableForSale: boolean;
-  [key: string]: string | boolean; // ie. { color: 'Red', size: 'Large', ... }
-};
 
 export function VariantSelector({
   options,

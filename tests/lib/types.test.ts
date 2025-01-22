@@ -11,6 +11,10 @@ import {
   Page,
   Image,
   MerchandiseSearchParams,
+  Combination,
+  ProductContextType,
+  ProductState,
+  Route,
 } from "@/lib/types";
 
 describe("Product", () => {
@@ -293,5 +297,95 @@ describe("MerchandiseSearchParams", () => {
         (value) => typeof value === "string"
       )
     ).toBe(true);
+  });
+});
+
+describe("Route type", () => {
+  it("should have a url property", () => {
+    const route: Route = {
+      url: "https://example.com",
+      lastModified: "2022-01-01",
+    };
+    expect(route).toHaveProperty("url");
+  });
+
+  it("should have a lastModified property", () => {
+    const route: Route = {
+      url: "https://example.com",
+      lastModified: "2022-01-01",
+    };
+    expect(route).toHaveProperty("lastModified");
+  });
+});
+
+describe("Combination type", () => {
+  it("should have an id property", () => {
+    const combination: Combination = { id: "123", availableForSale: true };
+    expect(combination).toHaveProperty("id");
+  });
+
+  it("should have an availableForSale property", () => {
+    const combination: Combination = { id: "123", availableForSale: true };
+    expect(combination).toHaveProperty("availableForSale");
+  });
+
+  it("should allow additional properties", () => {
+    const combination: Combination = {
+      id: "123",
+      availableForSale: true,
+      color: "Red",
+      size: "Large",
+    };
+    expect(combination).toHaveProperty("color");
+    expect(combination).toHaveProperty("size");
+  });
+});
+
+describe("ProductState type", () => {
+  it("should allow any string properties", () => {
+    const state: ProductState = {
+      name: "Product 1",
+      description: "This is a product",
+    };
+    expect(state).toHaveProperty("name");
+    expect(state).toHaveProperty("description");
+  });
+
+  it("should allow an optional image property", () => {
+    const state: ProductState = {
+      name: "Product 1",
+      description: "This is a product",
+      image: "https://example.com/image.jpg",
+    };
+    expect(state).toHaveProperty("image");
+  });
+});
+
+describe("ProductContextType type", () => {
+  it("should have a state property", () => {
+    const context: ProductContextType = {
+      state: { name: "Product 1", description: "This is a product" },
+      updateOption: () => ({}),
+      updateImage: () => ({}),
+    };
+    expect(context).toHaveProperty("state");
+  });
+
+  it("should have an updateOption property", () => {
+    const context: ProductContextType = {
+      state: { name: "Product 1", description: "This is a product" },
+      updateOption: () => ({}),
+      updateImage: () => ({}),
+    };
+    expect(context).toHaveProperty("updateOption");
+  });
+
+  it("should have an updateImage property", () => {
+    const context: ProductContextType = {
+      state: { name: "Product 1", description: "This is a product" },
+      updateOption: () => ({}),
+      updateImage: () => ({}),
+    };
+    expect(context).toHaveProperty("updateImage");
   });
 });

@@ -1,4 +1,4 @@
-export interface Product {
+export type Product = {
   id: string;
   handle: string;
   availableForSale: boolean;
@@ -14,20 +14,20 @@ export interface Product {
   tags: string[];
   updatedAt: string;
   seo: SEO;
-}
+};
 
-export interface SEO {
+export type SEO = {
   title: string;
   description: string;
-}
+};
 
-export interface ProductOption {
+export type ProductOption = {
   id: string;
   name: string;
   values: string[];
-}
+};
 
-export interface ProductVariant {
+export type ProductVariant = {
   id: string;
   title: string;
   availableForSale: boolean;
@@ -36,14 +36,14 @@ export interface ProductVariant {
     value: string;
   }[];
   price: Money;
-}
+};
 
-export interface Menu {
+export type Menu = {
   title: string;
   path: string;
-}
+};
 
-export interface Cart {
+export type Cart = {
   id: string;
   checkoutUrl: string;
   cost: {
@@ -53,9 +53,9 @@ export interface Cart {
   };
   lines: CartItem[];
   totalQuantity: number;
-}
+};
 
-export interface CartItem {
+export type CartItem = {
   id: string;
   quantity: number;
   cost: {
@@ -70,14 +70,14 @@ export interface CartItem {
     }[];
     product: Product;
   };
-}
+};
 
-export interface Money {
+export type Money = {
   amount: string;
   currencyCode: string;
-}
+};
 
-export interface Page {
+export type Page = {
   id: string;
   title: string;
   handle: string;
@@ -86,15 +86,38 @@ export interface Page {
   seo?: SEO;
   createdAt: string;
   updatedAt: string;
-}
+};
 
-export interface Image {
+export type Image = {
   url: string;
   altText: string;
   width: number;
   height: number;
-}
+};
 
 export type MerchandiseSearchParams = {
   [key: string]: string;
+};
+
+export type Route = {
+  url: string;
+  lastModified: string;
+};
+
+export type Combination = {
+  id: string;
+  availableForSale: boolean;
+  [key: string]: string | boolean; // ie. { color: 'Red', size: 'Large', ... }
+};
+
+export type ProductState = {
+  [key: string]: string;
+} & {
+  image?: string;
+};
+
+export type ProductContextType = {
+  state: ProductState;
+  updateOption: (name: string, value: string) => ProductState;
+  updateImage: (index: string) => ProductState;
 };

@@ -1,5 +1,5 @@
 "use client";
-
+import { ProductContextType, ProductState } from "@/lib/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, {
   createContext,
@@ -9,28 +9,16 @@ import React, {
   useCallback,
 } from "react";
 
-type ProductState = {
-  [key: string]: string;
-} & {
-  image?: string;
-};
-
-type ProductContextType = {
-  state: ProductState;
-  updateOption: (name: string, value: string) => ProductState;
-  updateImage: (index: string) => ProductState;
-};
-
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 /**
  * Provides the product context to its children, allowing them to access
  * and update the product state, which includes product options and images.
- * 
+ *
  * This component initializes the product state from URL search parameters
  * and provides methods to update product options and the selected image
  * optimistically.
- * 
+ *
  * @param children - The React components that will consume the product context.
  */
 export function ProductProvider({ children }: { children: React.ReactNode }) {

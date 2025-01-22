@@ -5,11 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Fragment, Suspense, useEffect, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Search, { SearchSkeleton } from "./search";
-
-interface Menu {
-  title: string;
-  path: string;
-}
+import { Menu } from "@/lib/types";
 
 export default function MobileMenu({ menu }: { menu: Menu[] }) {
   const pathname = usePathname();
