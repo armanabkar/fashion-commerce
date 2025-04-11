@@ -1,11 +1,7 @@
 import { getProducts } from "@/lib/testData";
 import { Route } from "@/lib/types";
-import { validateEnvironmentVariables } from "@/lib/utils";
+import { baseUrl, validateEnvironmentVariables } from "@/lib/utils";
 import { MetadataRoute } from "next";
-
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-  : "http://localhost:3000";
 
 export const dynamic = "force-dynamic";
 

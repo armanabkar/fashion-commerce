@@ -1,5 +1,9 @@
 import { ReadonlyURLSearchParams } from "next/navigation";
 
+export const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+  : "http://localhost:3000";
+
 /**
  * Creates a URL by combining a pathname and URLSearchParams.
  *
