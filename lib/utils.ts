@@ -1,5 +1,16 @@
 import { ReadonlyURLSearchParams } from "next/navigation";
 
+/**
+ * The `baseUrl` constant determines the base URL for the application.
+ * It prioritizes the environment variable `NEXT_PUBLIC_VERCEL_URL` to construct
+ * the URL dynamically for deployment environments. If the environment variable
+ * is not set, it defaults to `http://localhost:3000` for local development.
+ *
+ * - If `NEXT_PUBLIC_VERCEL_URL` is defined, the base URL will be in the format:
+ *   `https://<NEXT_PUBLIC_VERCEL_URL>`.
+ * - If `NEXT_PUBLIC_VERCEL_URL` is not defined, the base URL will default to:
+ *   `http://localhost:3000`.
+ */
 export const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : "http://localhost:3000";
