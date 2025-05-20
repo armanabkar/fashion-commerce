@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Grid from "@/components/grid";
 import ProductGridItems from "@/components/layout/product-grid-items";
 import { defaultSort, sorting } from "@/lib/constants";
-import { getProducts } from "@/lib/testData";
+import { fetchProducts } from "@/lib/testData";
 
 // export async function generateMetadata({
 //   params
@@ -30,7 +30,7 @@ export default async function CategoryPage(props: {
   const { sortKey, reverse } =
     sorting.find((item) => item.slug === sort) || defaultSort;
   // const products = await getCollectionProducts({ collection: params.collection, sortKey, reverse });
-  const products = await getProducts();
+  const products = await fetchProducts();
 
   return (
     <section>

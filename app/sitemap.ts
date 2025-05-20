@@ -1,4 +1,4 @@
-import { getProducts } from "@/lib/testData";
+import { fetchProducts } from "@/lib/testData";
 import { Route } from "@/lib/types";
 import { baseUrl, validateEnvironmentVariables } from "@/lib/utils";
 import { MetadataRoute } from "next";
@@ -37,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   //     }))
   //   );
 
-  const productsPromise = getProducts().then((products) =>
+  const productsPromise = fetchProducts().then((products) =>
     products.map((product) => ({
       url: `${baseUrl}/product/${product.handle}`,
       lastModified: product.updatedAt,

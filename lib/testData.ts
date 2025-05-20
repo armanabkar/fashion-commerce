@@ -481,7 +481,7 @@ export const cartItems: Cart = {
  * A function that gives product Array with 3 seconds delay
  * @returns {Promise<Product[]>} a promise that resolves to an array of Product objects
  */
-export const getProducts = async (): Promise<Product[]> => {
+export const fetchProducts = async (): Promise<Product[]> => {
   return new Promise<Product[]>((resolve) => {
     setTimeout(() => {
       resolve(products);

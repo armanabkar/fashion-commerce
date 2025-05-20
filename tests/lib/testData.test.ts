@@ -4,7 +4,7 @@ import {
   menu,
   homepageItems,
   cartItems,
-  getProducts,
+  fetchProducts,
 } from "@/lib/testData";
 
 describe("testData", () => {
@@ -113,11 +113,11 @@ describe("testData", () => {
     });
   });
 
-  describe("getProducts", () => {
+  describe("fetchProducts", () => {
     it("should return a promise that resolves to a list of products", async () => {
       vi.useFakeTimers(); // Mock timers for the test
 
-      const promise = getProducts();
+      const promise = fetchProducts();
       vi.runAllTimers(); // Fast-forward the timer
       const result = await promise;
 
