@@ -1,23 +1,23 @@
 # Fashion Commerce
 
-A high-performance, server-rendered Next.js 15 App Router ecommerce application.
+A modern, high-performance ecommerce application built with Next.js 15 App Router, designed for scalability, speed, and developer experience.
 
-This project uses React Server Components, Server Actions, Suspense, useOptimistic, and more.
+This project showcases advanced features like React Server Components, Server Actions, Suspense, and Edge rendering — ideal for those looking to learn or demonstrate cutting-edge React and Next.js architecture.
 
 ![Screenshot](./fashion-commerce.png)
 
-## Features
+## 🚀 Features
 
-- Next.js App Router
-- Optimized for SEO using Next.js's Metadata
-- React Server Components (RSCs) and Suspense for improved performance
-- Server Actions for mutations
-- Edge Runtime for faster rendering
-- New fetching and caching paradigms
-- Dynamic OG Images
-- Styling with Tailwind CSS
-- Automatic light/dark mode based on system settings
-- Comprehensive test suite using Vitest to ensure code quality and reliability
+- ⚛️ Next.js App Router
+- 🌎 Optimized for SEO using Next.js's Metadata
+- ⚛️ React Server Components (RSC) and Suspense for seamless rendering
+- 🧠 Server Actions for type-safe mutations and simplified server logic
+- 🌍 Edge Runtime for faster, globally-distributed performance
+- 🗂️ Advanced fetching & caching strategies using App Router patterns
+- 🧾 Dynamic Open Graph (OG) images for social media sharing
+- 🎨 Tailwind CSS for responsive, utility-first styling
+- 🌗 Automatic light/dark mode based on system preferences
+- ✅ Comprehensive test suite with Vitest
 
 ### Project Structure
 
