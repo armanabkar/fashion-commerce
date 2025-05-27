@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import MobileMenu from "./mobile-menu";
 import Search, { SearchSkeleton } from "./search";
 import { Menu } from "@/lib/types";
-const { SITE_NAME } = process.env;
+const { HEADER } = process.env;
 
 export default async function Navbar() {
   const menu = [
@@ -31,7 +31,7 @@ export default async function Navbar() {
           >
             <LogoSquare />
             <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
-              {SITE_NAME}
+              {HEADER}
             </div>
           </Link>
           {menu.length ? (

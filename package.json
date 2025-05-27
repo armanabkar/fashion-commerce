@@ -5,7 +5,7 @@
     "pnpm": ">=9"
   },
   "type": "module",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A Fashion-Forward E-commerce Experience Built with Next.js",
   "license": "MIT",
   "private": true,
@@ -18,37 +18,40 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest"
+    "test": "vitest",
+    "prettier": "prettier --write --ignore-unknown .",
+    "prettier:check": "prettier --check --ignore-unknown .",
+    "prettiertest": "pnpm prettier:check"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.19",
+    "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
     "clsx": "^2.1.1",
-    "geist": "^1.3.1",
-    "next": "15.0.2",
-    "react": "19.0.0-rc-02c0e824-20241028",
-    "react-dom": "19.0.0-rc-02c0e824-20241028"
+    "geist": "^1.4.2",
+    "next": "^15.4.0-canary.53",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "sonner": "^2.0.3"
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
-    "@tailwindcss/typography": "^0.5.15",
+    "@tailwindcss/postcss": "^4.1.7",
+    "@tailwindcss/typography": "^0.5.16",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.0.1",
-    "@types/node": "^20.17.6",
-    "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
-    "@vitejs/plugin-react": "^4.3.3",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "15.0.2",
-    "jsdom": "^25.0.1",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.15",
-    "typescript": "^5.6.3",
-    "vitest": "^2.1.5"
-  },
-  "overrides": {
-    "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "22.15.21",
+    "@types/react": "19.1.6",
+    "@types/react-dom": "19.1.5",
+    "@vitejs/plugin-react": "^4.5.0",
+    "eslint": "^9.27.0",
+    "eslint-config-next": "15.3.2",
+    "jsdom": "^26.1.0",
+    "postcss": "^8.5.3",
+    "prettier": "3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.1.7",
+    "typescript": "5.8.3",
+    "vitest": "^3.1.4"
   }
 }

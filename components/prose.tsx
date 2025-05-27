@@ -14,10 +14,7 @@ interface TextProps {
  *
  * @returns {JSX.Element} A div element with HTML content and applied styles.
  */
-const Prose: React.FC<{
-  html: string;
-  className?: string;
-}> = ({ html, className: customClassName }) => {
+const Prose: React.FC<TextProps> = ({ html, className: customClassName }) => {
   return (
     <div
       className={clsx(
