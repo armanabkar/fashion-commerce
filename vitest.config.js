@@ -19,12 +19,14 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: "./tests/setup.ts",
-    include: ["**/*.test.ts", "**/*.test.tsx"],
+    include: ["**/*.test.{ts,tsx}"],
     timeout: 30000, // 30 seconds
     threads: true,
-    concurrency: 5,
+    // concurrency: 5,
     coverage: {
       reporter: ["text", "lcov", "clover"],
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: ["**/*.test.*", "tests/**"],
       threshold: {
         global: {
           branches: 80,
